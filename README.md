@@ -608,6 +608,29 @@ private string[] arr = new string[100];
     }
 ```
 
+ ___
+
+
+
+
+
+<h3 align="center">UpCast and DownCast</h3> 
+  
+```c#
+DerivedClass instance = new DerivedClass();
+instance.Method();
+
+//upcast
+BaseClass instanceUp = instance;
+instanceUp.Method();
+
+//DownCast
+DerivedClass instanceDown = (DerivedClass)instanceUp;
+instanceDown.Method();
+```
+<b>DownCast can’t work without Upcast.</b>
+
+
 
 
 

@@ -8,6 +8,7 @@
 
 
 <h3 align="center">Value Types - Stack</h3>
+<br/>
 
 
 All numeric data types
@@ -28,9 +29,8 @@ Except :
 int? = null;
 ```
 
-___
 <h3 align="center">Reference Type - Heap</h3>
-
+</br>
 
 String
 

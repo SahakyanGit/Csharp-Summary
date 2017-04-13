@@ -630,8 +630,9 @@ instanceDown.Method();
 ```
 <b>DownCast can’t work without Upcast.</b>
 
+<br/>
 
-
+# Updates will be soon.
 
 
 

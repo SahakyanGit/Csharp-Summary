@@ -479,6 +479,8 @@ If you delete `where T` : struct this part of code then you can drop `<HERE>` an
 
 <h3 align="center">Constraints</h3> 
 
+<br/>
+
 | Code            | Definition     | 
 | -------------   |:-------------: | 
 | where T: struct | The type argument must be a value type. Any value type except Nullable can be specified. See Using Nullable Types for more information.
@@ -491,6 +493,121 @@ If you delete `where T` : struct this part of code then you can drop `<HERE>` an
 
 
 [More Info](https://docs.microsoft.com/en-us/dotnet/articles/csharp/programming-guide/generics/constraints-on-type-parameters)
+
+ ___
+
+
+
+
+
+<h3 align="center">Extension Methods</h3> 
+
+
+
+
+```c#
+Public static string MyMethod(this string str)
+{
+     return str; 
+}
+
+String s = “some string”;
+s.MyMethod();
+```
+
+ ___
+
+
+
+
+
+<h3 align="center">Action And Func</h3> 
+                                         
+
+
+Lambda expressions that don't return a value correspond to a specific `Action` delegate, depending on its number of parameters. Lambda expressions that return a value correspond to a specific `Func` delegate, depending on its number of parameters. For example, a lambda expression that has two parameters but returns no value corresponds to an `Action<T1, T2>` delegate. A lambda expression that has one parameter and returns a value corresponds to `Func<T, TResult>` delegate.
+
+```c#
+Static void Main(string[] args)
+{ 
+    Func<int,int> square = x = > x*x;    //x is parameter, it should return x*x,square is name of the method;
+    Console.WriteLine(square(25));
+    Action<string> method = x=> Console>WriteLine(x); 
+    method(“a”);
+} 
+```
+
+`Action` is a delegate (pointer) to a method, that takes `zero`, `one` or `more` input parameters, but does not return anything.
+
+`Func` is a delegate (pointer) to a method, that takes `zero`, `one` or `more` input parameters, and returns a value (or reference).
+
+`Predicate` is a special kind of Func often used for comparisons.
+
+ ___
+
+
+
+
+
+<h3 align="center">Indexers</h3> 
+
+                                                       
+
+`Indexers` are similar to properties. In many ways indexers build on the same language features as `properties`. `Indexers` enable indexed properties: properties referenced using one or more arguments. Those arguments provide an index into some collection of values.
+
+```c#
+private string[] arr = new string[100];
+
+        public string this[int i]
+        {
+            get
+            {
+                // This indexer is very simple, and just returns or sets
+                // the corresponding element from the internal array.
+                return arr[i];
+            }
+            set
+            {
+                arr[i] = value;
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            Operation o = new Operation();
+            o[5] = "key";
+            Console.WriteLine(o[5]);
+            o[101] = "s";
+            Console.WriteLine(o[101]);         //System.IndexOutOfRangeException
+
+            Console.ReadKey();
+        } 
+```
+
+ ___
+
+
+
+
+
+<h3 align="center">Deeper Dive into foreach</h3> 
+
+```c#  
+    var enumerator = collection.GetEnumerator();
+    try 
+    {
+        while (enumerator.MoveNext())
+        {
+            var item = enumerator.Current;
+            Console.WriteLine(item.ToString());
+        }
+    } 
+    finally 
+    {
+        // dispose of enumerator.
+    }
+```
+
 
 
 

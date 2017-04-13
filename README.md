@@ -415,5 +415,66 @@ Also, you can only use "as" with reference types, so if you are typecasting to a
 Note:
 The as method can only be used for types that can be assigned a null value. That use to only mean reference types, but when .NET 2.0 came out, it introduced the concept of a nullable value type. Since these types can be assigned a null value, they are valid to use with the as operator.
 
+___
+
+
+
+
+
+
+
+<h3 align="center">C# Keywords</h3>  
+
+
+
+
+[C# all keywords link](https://docs.microsoft.com/en-us/dotnet/articles/csharp/language-reference/keywords/)
+
+___
+
+
+
+
+
+<h3 align="center">Nullable<T> class</h3> 
+  
+
+`Nullable` types are instances of the `System.Nullable<T> struct`. A nullable type can represent the correct range of values for its underlying `value type`, plus an additional `null` value. For example, a `Nullable<Int32>`, pronounced "Nullable of Int32," can be assigned any value from `-2147483648 to 2147483647`, or it can be assigned the `null` value. A `Nullable<bool>` can be assigned the values `true`, `false`, or `null`. The ability to assign `null` to `numeric` and `Boolean` types is especially useful when you are dealing with databases and other data types that contain elements that may not be assigned a value. For example, a `Boolean` field in a database can store the values `true` or `false`, or it may be undefined.
+
+
+`Nullable` types represent `value-type` variables that can be assigned the value of `null`. You cannot create a nullable type based on `reference type`. (Reference types already support the null value.)
+<b>The syntax `T?` is shorthand for Nullable<T><b/> , where `T` is a value type. The two forms are interchangeable.
+ ```c#
+Nullable<int> num =5;
+//is the same as 
+int? num=5;
+ ```
+ 
+ ___
+
+
+
+
+
+<h3 align="center">Generics<T> class</h3> 
+  
+ 
+  
+```c#
+Public class MyClass<T> where T : struct
+{
+      Public MyClass<T> {}
+}
+
+MyClass<SomeStruct> a = new MyClass();   it requires struct.
+```
+
+If you delete `where T` : struct this part of code then you can drop `<HERE>` any type.
+
+
+
+
+
+
 
 

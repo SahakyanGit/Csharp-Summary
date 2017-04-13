@@ -191,4 +191,229 @@ Let us consider the example I wants to provide the discount on particular produc
 A,B,C in this scenario suppose A,B,C are the classes and `Discount` is the class which contains virtual `CustDiscount()`
 method,then i simply override it on class A,B,C instead of writing three different methods for each class.
 
+___
+
+
+
+<h3 align="center"> Struct vs Class </h3>    
+
+
+
+
+In .NET, there are two categories of types, reference types and value types.
+
+Structs are value types and classes are reference types.
+
+The general difference is that a reference type lives on the heap, and a value type lives inline, that is, wherever it 
+is your variable or field is defined.
+
+A variable containing a value type contains the entire value type value. For a struct, that means that the variable 
+contains the entire struct, with all its fields.
+
+A variable containing a reference type contains a pointer, or a reference to somewhere else in memory where the actual 
+value resides.
+
+This has one benefit, to begin with:
+
+value types always contains a value
+reference types can contain a null-reference, meaning that they don't refer to anything at all at the moment
+Internally, reference types are implemented as pointers, and knowing that, and knowing how variable assignment works, 
+there are other behavioral patterns:
+
+copying the contents of a value type variable into another variable, copies the entire contents into the new variable, 
+making the two distinct. In other words, after the copy, changes to one won't affect the other
+copying the contents of a reference type variable into another variable, copies the reference, which means you now have 
+two references to the same somewhere else storage of the actual data. In other words, after the copy, changing the data 
+in one reference will appear to affect the other as well, but only because you're really just looking at the same data 
+both places
+When you declare variables or fields, here's how the two types differ:
+
+variable: value type lives on the stack, reference type lives on the stack as a pointer to somewhere in heap memory 
+where the actual memory lives (though note Eric Lippert's article series: The Stack Is An Implementation Detail.)
+class/struct-field: value type lives completely inside the type, reference type lives inside the type as a pointer 
+to somewhere in heap memory where the actual memory lives.
+
+<b>Classes Only:</b>
+
+Can support inheritance
+Are reference (pointer) types
+The reference can be null
+Have memory overhead per new instance
+
+<b>Structs Only:</b>
+
+Cannot support inheritance
+Are value types
+Are passed by value (like integers)
+Cannot have a null reference (unless Nullable is used)
+Do not have a memory overhead per new instance - unless 'boxed'
+
+<b>Both Classes and Structs:</b>
+
+Are compound data types typically used to contain a few variables that have some logical relationship
+Can contain methods and events
+Can support interfaces
+___
+
+
+
+<h3 align="center">Abstract vs Interface </h3>    
+
+
+
+
+
+
+
+<b>Abstract class:</b>
+
+
+A class that cannot be instantiated.  An abstract class is a class that must be inherited and have the methods overridden.
+An abstract class is essentially a blueprint for a class without any implementation.
+
+
+
+An abstract class is a special kind of class that cannot be instantiated. It normally contains one or more abstract 
+methods or abstract properties. It provides body to a class.
+
+
+
+<b>Interface:</b>
+
+
+An interface has no implementation; it only has the signature or in other words, just the definition of the methods without 
+the body.
+
+
+
+It's an abstract class with public abstract methods all of which must be implemented in the inherited classes.
+
+
+
+<b>Abstract or Interface:</b>
+
+Interfaces, like classes, define a set of properties, methods, and events. But unlike classes, interfaces do not provide 
+implementation. They are implemented by classes, and defined as separate entities from classes. Even though class 
+inheritance allows your classes to inherit implementation from a base class, it also forces you to make most of your 
+design decisions when the class is first published.
+
+Abstract classes are useful when creating components because they allow you specify an invariant level of functionality 
+in some methods, but leave the implementation of other methods until a specific implementation of that class is needed. 
+They also version well, because if additional functionality is needed in derived classes, it can be added to the base 
+class without breaking code.
+
+
+
+<b>Difference between Abstract class and Interface: </b>
+
+
+<b>Abstract Class: </b>
+
+1) An abstract method is created by specifying the abstract type modifier.
+
+2) An abstract method contains no body.
+
+3) An abstract method is not implemented by the base class.
+
+4) An abstract method is automatically virtual.
+
+5) A derived class must override it.
+
+6) Abstract class can have modifiers for methods,properties etc.,
+
+7) An abstract class can implement a property.
+
+8) The abstract modifier cannot be applied to static methods.
+
+9) Properties can also be abstract.
+
+10) A class containing abstract methods must be declared as abstract with the abstract specifier.
+
+11) There can be no objects of an abstract class.
+
+12) If a derived class doesn't implement all of the abstract methods in the base class, then the derived class must also       
+be specified as abstract.
+
+13) An abstract class can inherit from a class and one or more interfaces.
+
+14) An abstract class can implement code with non-Abstract methods.
+
+15) Abstract class can have constant and fields.
+
+16) An abstract class can have constructors or destructors.
+
+17) An abstract class cannot be inherited from by structures.
+
+18) An abstract class cannot support multiple inheritance.
+
+19) If we add a new method to an abstract class then we have the option of providing default implementation and 
+therefore all the existing code might work properly.
+
+
+
+<b>Interface:</b>
+
+1) Interfaces cannot be instantiated directly.
+
+2) Interfaces can contain events, method, indexer and properties.
+
+3) An Interface can contain property definitions.
+
+4) Interfaces contain no implementation of methods.
+
+5) Classes and Structs can implement more than one interface.
+
+6) An Interface can be inherited from by structures.
+
+7) An interface itself can inherit from multiple interfaces (Interface can support multiple inheritance).
+
+8) An abstract class can implement a property.
+
+9) If we add a new method to an Interface then we have to track down all the implementations of the interface and define 
+implementation for the new method.
+___
+
+
+
+<h3 align="center">Operators</h3>    
+
+
+
+
+
+
+
+
+
+`x?.y` – `null` conditional member access. Returns null if the left hand operand is null.
+
+`x ?? y` – returns `x` if it is `non-null`; otherwise, returns `y`.
+
+`Typeof` – returns the `System.Type` object representing the operand.
+
+`Checked` – enables overflow checking for integer operations.
+
+`Unchecked` – disables overflow checking for integer operations. This is the default compiler behavior.
+
+`default(T)` – returns the default initialized value of type `T`, `null` for reference types, `zero` for numeric types, and `zero/null` filled in members for struct types.
+
+`Sizeof` – returns the size in bytes of the type operand.
+
+`->` – pointer dereferencing combined with member access.
+
+`Is` – type compatibility. Returns `true` if the evaluated left operand can be cast to the type specified in the right operand (a `static` type).
+
+`As` –`SomeClass someObject = obj as SomeClass`.-it seems to return `null` if obj isn't a `SomeClass`.
+
+
+
+
+<b>SomeClass someObject = (SomeClass) obj; VS SomeClass someObject = obj as SomeClass;</b>
+
+With the "classic" method, if the cast fails, an exception is thrown. With the as method, it results in null, which can be checked for, and avoid an exception being thrown.
+Also, you can only use "as" with reference types, so if you are typecasting to a value type, you must still use the "classic" method.
+Note:
+The as method can only be used for types that can be assigned a null value. That use to only mean reference types, but when .NET 2.0 came out, it introduced the concept of a nullable value type. Since these types can be assigned a null value, they are valid to use with the as operator.
+
+
 

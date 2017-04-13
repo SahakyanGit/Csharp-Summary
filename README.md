@@ -436,14 +436,14 @@ ___
 
 
 
-<h3 align="center">Nullable<T> class</h3> 
+<h3 align="center">Nullable<T> class </h3> 
   
 
 `Nullable` types are instances of the `System.Nullable<T> struct`. A nullable type can represent the correct range of values for its underlying `value type`, plus an additional `null` value. For example, a `Nullable<Int32>`, pronounced "Nullable of Int32," can be assigned any value from `-2147483648 to 2147483647`, or it can be assigned the `null` value. A `Nullable<bool>` can be assigned the values `true`, `false`, or `null`. The ability to assign `null` to `numeric` and `Boolean` types is especially useful when you are dealing with databases and other data types that contain elements that may not be assigned a value. For example, a `Boolean` field in a database can store the values `true` or `false`, or it may be undefined.
 
 
 `Nullable` types represent `value-type` variables that can be assigned the value of `null`. You cannot create a nullable type based on `reference type`. (Reference types already support the null value.)
-<b>The syntax `T?` is shorthand for Nullable<T><b/> , where `T` is a value type. The two forms are interchangeable.
+The syntax `T?` is shorthand for Nullable<T> , where `T` is a value type. The two forms are interchangeable.
  ```c#
 Nullable<int> num =5;
 //is the same as 
